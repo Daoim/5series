@@ -635,7 +635,6 @@ margin-top:20px;
 #section2 .tab-content .tab-pane p{
 	font-size:24px;
 	letter-spacing: 5px;
-	    color: white;
 	}
 #section2 .colorName{
 	font-size:30px;
@@ -885,6 +884,10 @@ hr{
 	.infoPrice h2
 	{
 		font-size:18px;
+	}
+	#section2 .tab-content .tab-pane p
+	{
+		color:white;
 	}
 #section2 .nav-tabs > li > a img {
     width: 24px;

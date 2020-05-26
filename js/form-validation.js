@@ -33,7 +33,7 @@ $(document).ready(function() {
         excluded: [':disabled'],
         feedbackIcons: faIcon,
         fields: {
-            email: {
+            Full_Email: {
                 validators: {
                     notEmpty: {
                         message: 'Địa chỉ email không được để trống.'
@@ -43,14 +43,14 @@ $(document).ready(function() {
                     }
                 }
             },
-            name: {
+            Full_Name: {
                 validators: {
                     notEmpty: {
                         message: 'Họ tên không được để trống.'
                     }
                 }
             },
-            phone: {
+            Full_Phone: {
                 validators: {
                     notEmpty: {
                         message: 'Điện thoại không được để trống.'
@@ -62,14 +62,14 @@ $(document).ready(function() {
                     }
                 }
             },
-            cboLocation: {
+            Full_Location: {
                 validators: {
                     notEmpty: {
                         message: 'Địa điểm không được để trống.'
                     }
                 }
             },
-            cboNhuCau: {
+            Full_NhuCau: {
                 validators: {
                     notEmpty: {
                         message: 'Cần chọn nhu cầu.'
@@ -78,28 +78,21 @@ $(document).ready(function() {
             }
         },
         onSuccess: function(e) {
+			showLoadingContactImage('content-mobile', 'formContentContactMobile');
+			// đem tất cả dữ liệu trong form id là 'google-form' gom thành biến data
+			let data = $('#frmMobile').serialize();
 
-            var name = $('#txtName').val();
-            var phone = $('#txtPhone').val();
-            var email = $('#txtEmail').val();
-            var vehicle = $('#cboNhuCau').val();
-            var address = $('#cboLocation').val();
-            //var nhucau = $('#cboNhuCau').val();
-            var emailto = "quyendn84@gmail.com";
-            var webdomain = "f5academy";
-            var dataJSON = { "name": name, "phone": phone, "email": email, "vehicle": vehicle, "address": address, "emailto": emailto }
-            var check = checkPhoneNumber();
-            if (!check)
-                return;
-            showLoadingContactImage('content-mobile', 'formContentContactMobile');
-            $.ajax({
-                url: "https://alpha.f5academy.net/api/BMWX1service",
-                type: "Post",
-                async: false,
-                data: dataJSON,
-                contentType: 'application/json; charset=utf-8',
-                dataType: 'jsonp',
-                success: function(states) {
+			$.ajax({ //Sử dụng Ajax gửi dữ liệu đi
+				url: 'https://script.google.com/macros/s/AKfycbymH8Xk5Ay-5CIgmmwiwHC-7JFQHzR-f_Eqtgg_yfRJH07QVAg/exec',
+				method: 'GET',
+				dataType: 'json',
+				data: data,
+				// success: function(responseData, textStatus, jqXHR) {
+				// },
+				// error: function(jqXHR, textStatus, errorThrown) {
+					// console.log(errorThrown);
+				// }
+				success: function(states) {
                     $('#frmMobile').bootstrapValidator('resetForm', true);
                     hideLoadingContactImage('content-mobile', 'formContentContactMobile');
                 },
@@ -107,17 +100,17 @@ $(document).ready(function() {
                     toastr.error('Đã có lỗi trong quá trình đăng ký, mời bạn thử lại.', { timeOut: 5000 })
                     hideLoadingContactImage('content-mobile', 'formContentContactMobile');
                 },
-                complete: function(jqXHR, textStatus) {
+                complete: function(responseData, jqXHR, textStatus) {
                     $('#txtName').val('');
                     $("#txtPhone").val('');
                     $('#txtEmail').val('');
                     $('#frmMobile').bootstrapValidator('resetForm', true);
                     toastr.success('Cảm ơn bạn đã đăng ký.</br>Chúng tôi sẽ liên hệ với quý khách trong thời gian sớm nhất!', {
-                        timeOut: 5000
+                        timeOut: 8000
                     })
-                    window.location.href = "/dang-ky-thanh-cong.html";
+                    window.location.href = "dang-ky-thanh-cong.html";
                 }
-            });
+			});
         }
     }).on('success.form.fv', function(e) {
 
@@ -152,6 +145,8 @@ $(document).ready(function() {
         $('#formContentContact').show();
         $('#loading-image').remove();
     }
+	
+	
 
     function showLoadingContactImage(contentLoading, frmContent) {
 
@@ -164,5 +159,29 @@ $(document).ready(function() {
         $('#' + frmContent).show();
         $('#loading-image').remove();
     }
+	
+	function getDate() {
+	  var today = new Date();
+	  var dd = today.getDate();
+	  var mm = today.getMonth()+1; //January is 0!
+	  var yyyy = today.getFullYear();
+
+	  if(dd<10) {
+		  dd = '0'+dd
+	  } 
+
+	  if(mm<10) {
+		  mm = '0'+mm
+	  } 
+
+	  today = dd  + '/' + mm + '/' + yyyy;
+	  console.log(today);
+	  document.getElementById("date").value = today;
+	}
+
+
+	window.onload = function() {
+	  getDate();
+	};
 
 });

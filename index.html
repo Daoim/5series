@@ -54,7 +54,7 @@
 				<div>
 					<div class="container">
 						<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse"></button>
-						<a data-scroll="" data-options="easing: easeInQuad" href="#slide" class="navbar-brand visible-xs">
+						<a data-scroll="" data-options="easing: easeInQuad" href="#banner" class="navbar-brand visible-xs">
 							<img src="img/logo_black.png">
 						</a>
 						<div class="row">
@@ -69,7 +69,7 @@
 								</nav>
 							</div>
 							<div class="cols-md-1">
-								<a href="#" class="hidden-xs">
+								<a data-scroll="" data-options="easing: easeInQuad" href="#banner" class="hidden-xs">
 									<img src="img/logo.png">
 								</a>
 							</div>
@@ -89,7 +89,7 @@
             <div id="text">
             	<div class="container wow fadeInUp animated">
                 	<h3>THE X5</h3>
-                    <div><button class="btn navbar1"  data-scroll="" data-options="easing: easeInQuad" href="#section3"><strong>Đăng ký nhận ưu đãi</strong></button></div>
+                    <div><button class="btn navbar1"  data-scroll="" data-options="easing: easeInQuad" href="#section4"><strong>Đăng ký nhận ưu đãi</strong></button></div>
                 </div>
             </div>
         </div>
@@ -675,16 +675,16 @@
 						<form class="" style="max-width:680px; margin:0 auto;" id="frmMobile">
 						<div id="formContentContactMobile">
 							<div class="form-group">
-								<input type="text" class="form-control" name="name" id="txtName" placeholder="Họ và tên">
+								<input type="text" class="form-control" name="Full_Name" id="txtName" placeholder="Họ và tên">
 							</div>
 							<div class="form-group">
-								<input type="text" class="form-control" id="txtPhone" onkeypress="return AllowNumberOnly(event);" name="phone" placeholder="Số điện thoại">
+								<input type="text" class="form-control" id="txtPhone" onkeypress="return AllowNumberOnly(event);" name="Full_Phone" placeholder="Số điện thoại">
 							</div>
 							<div class="form-group">
-								<input type="email" class="form-control" id="txtEmail" name="email" placeholder="Email">
+								<input type="email" class="form-control" id="txtEmail" name="Full_Email" placeholder="Email">
 							</div>
 							<div class="form-group">
-								<select class="form-control" id="cboLocation" name="cboLocation">
+								<select class="form-control" id="cboLocation" name="Full_Location">
 									<option value="">Chọn Tỉnh/Thành phố</option>
 									<option value="HÀ NỘI">HÀ NỘI</option>
 									<option value="HỒ CHÍ MINH">HỒ CHÍ MINH</option>
@@ -752,13 +752,16 @@
 								</select>
 						</div>
 						<div class="form-group">
-						<select class="form-control" id="cboNhuCau" name="cboNhuCau">
+						<select class="form-control" id="cboNhuCau" name="Full_NhuCau">
 							<option value="" selected>Nhu cầu của bạn</option>
 							<option value="Đăng ký lái thử">Đăng ký lái thử</option>
 							<option value="Nhận Ưu Đãi">Nhận Ưu Đãi</option>
 							<option value="Nhận Thông Số Kỹ Thuật">Nhận Thông Số Kỹ Thuật</option>
 						</select>
 						</div>
+						
+						<input type="hidden" onload="getDate()" class="form-control" id="date" name="Full_Time" value="">
+						
 						<div class="form-group text-center">
 							<button class="btn btn-default btn-bmw">Đăng ký</button>
 						</div>
