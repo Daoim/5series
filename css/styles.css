@@ -856,9 +856,26 @@ hr{
 and (min-device-width : 768px)
 and (max-device-width : 1024px)
 and (orientation : landscape) { 
-	body{
-		display:none;
-	}
+	#banner #text {
+	 padding:0;
+		bottom: 3%;
+	  }
+	  #banner #text .btn{margin-top:0}
+	  
+	  #banner #text h3 {
+		font-size: 100px;
+		margin: 0;
+	  }
+	  .header-text{
+		  top:1%;
+	  }
+	  .header-text h2{font-size:25px;}
+	  .carousel-indicators{bottom:0;}
+	  
+	  .infoPrice {
+		margin-top: 30px;
+		margin-bottom: 100px;
+		}
 }
 
 
